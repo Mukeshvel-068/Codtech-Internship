@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class ElectricityBillingSystem {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Consumer Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Consumer Number: ");
+        int consumerNo = sc.nextInt();
+
+        System.out.print("Enter Units Consumed: ");
+        double units = sc.nextDouble();
+
+        double billAmount;
+
+        if (units <= 100) {
+            billAmount = units * 1.50;
+        } else if (units <= 200) {
+            billAmount = (100 * 1.50) + ((units - 100) * 2.50);
+        } else if (units <= 500) {
+            billAmount = (100 * 1.50) + (100 * 2.50)
+                    + ((units - 200) * 4.00);
+        } else {
+            billAmount = (100 * 1.50) + (100 * 2.50)
+                    + (300 * 4.00)
+                    + ((units - 500) * 6.00);
+        }
+
+        System.out.println("\n===== Electricity Bill =====");
+        System.out.println("Consumer Name   : " + name);
+        System.out.println("Consumer Number : " + consumerNo);
+        System.out.println("Units Consumed  : " + units);
+        System.out.printf("Bill Amount     : ₹%.2f%n", billAmount);
+
+        sc.close();
+    }
+}
